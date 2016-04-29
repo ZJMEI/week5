@@ -1,0 +1,43 @@
+<h2>Add a New Movie</h2>
+
+<%= form_tag "/movies", :method => :post do %>
+
+  <p>
+    <%= label_tag :title, "Movie Title" %>
+    <br>
+    <%= text_field_tag :title, "", :size => 80, autofocus: true %>
+  </p>
+
+  <p>
+    <%= label_tag :director_id, "Director:" %>
+    <br>
+    <select name="director_id">
+      <% Director.all.each do |d| %>
+        <option value="<%= d.id %>"><%= d.name %></option>
+      <% end %>
+    </select>
+  </p>
+
+
+  <p>
+    <label for="year">Year:</label>
+    <br>
+    <input id="year" size="4" type="number" name="year" value="">
+  </p>
+  <p>
+    <label for="image_url">Link to Poster Image:</label>
+    <br>
+    <input id="image_url" type="text" size="80" name="image_url" value="">
+  </p>
+
+  <p>
+    <label for="plot">Plot Summary:</label>
+    <br>
+    <textarea id="plot" name="plot" rows="5" cols="80">
+      
+    </textarea>
+  </p>
+
+  <input type="submit" value="Add Movie">
+
+<% end %>
