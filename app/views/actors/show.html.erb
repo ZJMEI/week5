@@ -3,6 +3,9 @@
 <h3>Filmography</h3>
 
 <ul>
-  <li><%= link_to "Movie #1", "/movies/#{Movie.first.id}" %></li>
-  <li><%= link_to "Movie #2", "/movies/#{Movie.last.id}" %></li>
+  <% roles = Role.where(actor_id: @actor.id) %>
+  <% roles.each do |role| %>
+    <% movie = Movie.find_by(id: role.movie_id) %>
+    <li><%= link_to movie.title, "/movies/#{movie.id}" %></li>
+  <% end %>
 </ul>

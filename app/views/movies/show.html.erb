@@ -20,9 +20,12 @@
 
 
   <p><strong>Actors: </strong></p>
+  <% roles = Role.where(movie_id: @movie.id) %>
   <ul>
-    <li><%= link_to "Actor #1", "/actors/#{Actor.first.id}" %></li>
-    <li><%= link_to "Actor #2", "/actors/#{Actor.last.id}" %></li>
+    <% roles.each do |role| %>
+      <% actor = Actor.find_by(id: role.actor_id) %>
+      <li><%= link_to actor.name, "/actors/#{actor.id}" %></li>
+    <% end %>
   </ul>
 
 </div>
