@@ -11,8 +11,7 @@
   <p><%= image_tag @movie.image_url, class: 'pull-right' %></p>
 
   <p><strong>Directed By: </strong>
-     <% director = Director.find_by(id: @movie.director_id) %>
-     <%= link_to director.name, "/directors/#{director.id}" %>
+    <%= link_to @movie.director.name, "/directors/#{@movie.director.id}" %>
   </p>
 
   <p><strong>Released:</strong> <%= @movie.year %></p>
@@ -20,11 +19,10 @@
 
 
   <p><strong>Actors: </strong></p>
-  <% roles = Role.where(movie_id: @movie.id) %>
+
   <ul>
-    <% roles.each do |role| %>
-      <% actor = Actor.find_by(id: role.actor_id) %>
-      <li><%= link_to actor.name, "/actors/#{actor.id}" %></li>
+    <% @movie.roles.each do |role| %>
+      <li><%= link_to role.actor.name, "/actors/#{role.actor.id}" %></li>
     <% end %>
   </ul>
 
