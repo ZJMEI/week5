@@ -1,8 +1,9 @@
 <h1>
   <%= @movie.title %>
   <small>
-    <a href="/movies/<%= @movie.id %>/edit">Edit This Movie</a>
-    <%= link_to "Delete This Movie", "/movies/#{@movie.id}", :method => :delete %>
+    <!-- <a href="/movies/<%= @movie.id %>/edit">Edit This Movie</a> -->
+    <%= link_to "Edit This Movie", edit_movie_path(@movie.id) %>
+    <%= link_to "Delete This Movie", movie_path(@movie.id), :method => :delete %>
   </small>
 </h1>
 

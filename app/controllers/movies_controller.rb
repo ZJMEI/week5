@@ -12,13 +12,13 @@ class MoviesController < ApplicationController
     movie.director_id = params[:director_id]
     movie.year = params[:year]
     movie.save
-    redirect_to "http://localhost:3000/movies"
+    redirect_to movies_url
   end
 
   def show
     @movie = Movie.find_by(id: params[:id])
     if @movie == nil
-      redirect_to "http://localhost:3000/movies"
+      redirect_to movies_url
     end
   end
 
@@ -31,13 +31,13 @@ class MoviesController < ApplicationController
   end
 
   def update
-    @movie = Movie.find_by(id: params[:id])
-    @movie.title = params[:title]
-    @movie.plot = params[:plot]
-    @movie.image_url = params[:image_url]
-    @movie.year = params[:year]
-    @movie.save
-    redirect_to "http://localhost:3000/movies/#{@movie.id}"
+    movie = Movie.find_by(id: params[:id])
+    movie.title = params[:title]
+    movie.plot = params[:plot]
+    movie.image_url = params[:image_url]
+    movie.year = params[:year]
+    movie.save
+    redirect_to movies_url(@movie)
   end
 
   def destroy
@@ -45,7 +45,7 @@ class MoviesController < ApplicationController
     if movie
       movie.delete
     end
-    redirect_to "http://localhost:3000/movies"
+    redirect_to movies_url
   end
 
 end

@@ -1,12 +1,13 @@
 <div class="movie-box">
-  <a href="/movies/new"><%= image_tag 'add_new.png' %></a>
+  <!-- <a href="/movies/new"><%= image_tag 'add_new.png' %></a> -->
+  <%= link_to image_tag('add_new.png'), new_movie_path %>
 </div>
 
 <% @movies.each do |movie| %>
 
   <div class="movie-box">
-    <a href="/movies/<%= movie.id %>" data-id="<%= movie.id %>"><%= image_tag movie.image_url %></a>
-    <h3><a href="#"><%= movie.title %></a></h3>
+    <%= link_to image_tag(movie.image_url), movie_path(movie.id) %>
+    <h3><%= link_to movie.title, movie_path(movie.id) %></h3>
   </div>
 
 <% end %>
