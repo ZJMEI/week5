@@ -1,14 +1,8 @@
 class Movie < ActiveRecord::Base
 
-  def director
-    return Director.find_by(id: self.director_id)
-  end
+  belongs_to :director  #, foreign_key: :director_id, class_name: "Director"
 
-  def roles
-    Role.where(movie_id: self.id)
-  end
+  has_many :roles  #, foreign_key: :movie_id, class_name: 'Role'
+  has_many :actors, :through => :roles
 
-  def actors
-
-  end
 end

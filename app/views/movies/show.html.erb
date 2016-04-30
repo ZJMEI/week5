@@ -21,8 +21,8 @@
   <p><strong>Actors: </strong></p>
 
   <ul>
-    <% @movie.roles.each do |role| %>
-      <li><%= link_to role.actor.name, "/actors/#{role.actor.id}" %></li>
+    <% @movie.actors.each do |actor| %>
+      <li><%= link_to actor.name, "/actors/#{actor.id}" %></li>
     <% end %>
   </ul>
 
